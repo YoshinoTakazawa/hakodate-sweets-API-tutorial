@@ -9,7 +9,7 @@ info:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 servers:
-  - url: http://localhost:3000/
+  - url: http://sweets-dev.kmdkuk.com:3000/
     description: 開発用
 tags:
   - name: "Sweets"
