@@ -36,7 +36,7 @@ services:
     volumes:
       - ./public/apidocs/swagger.yaml:/usr/share/nginx/html/api/swagger.yaml
     environment:
-      - API_URL=http://localhost:10000/api/swagger.yaml
+      - API_URL=http://sweets-dev.kmdkuk.com:10000/api/swagger.yaml
     ports:
       - "10000:8080"
 
