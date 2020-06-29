@@ -11,11 +11,11 @@ class SweetsController < ApplicationController
       else
         @sweets = Sweet.all
       end
-      render json: @sweets
+      render json: @sweets.to_json(include: :categories)
     end
   
     def show
-      render json: @sweet
+      render json: @sweet.to_json(include: :categories)
     end
   
     def create
@@ -24,7 +24,7 @@ class SweetsController < ApplicationController
       @sweet.shop = shop
 
       if @sweet.save
-        render json: @sweet, status: :created, location: @sweet
+        render json: @sweet.to_json(include: :categories), status: :created, location: @sweet
       else
         render json: @sweet.errors, status: :unprocessable_entity
       end
@@ -32,7 +32,7 @@ class SweetsController < ApplicationController
   
     def update
       if @sweet.update(sweet_params)
-        render json: @sweet
+        render json: @sweet.to_json(include: :categories)
       else
         render json: @sweet.errors, status: :unprocessable_entity
       end
