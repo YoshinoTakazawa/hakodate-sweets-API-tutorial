@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_29_100848) do
+ActiveRecord::Schema.define(version: 2020_06_29_110358) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(version: 2020_06_29_100848) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "sweet_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "sweet_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_sweet_categories_on_category_id"
+    t.index ["sweet_id"], name: "index_sweet_categories_on_sweet_id"
+  end
+
   create_table "sweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "shop_id", null: false
     t.string "name"
@@ -48,5 +57,7 @@ ActiveRecord::Schema.define(version: 2020_06_29_100848) do
     t.index ["shop_id"], name: "index_sweets_on_shop_id"
   end
 
+  add_foreign_key "sweet_categories", "categories"
+  add_foreign_key "sweet_categories", "sweets"
   add_foreign_key "sweets", "shops"
 end
