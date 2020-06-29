@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_29_092847) do
+ActiveRecord::Schema.define(version: 2020_06_29_100848) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -37,4 +37,16 @@ ActiveRecord::Schema.define(version: 2020_06_29_092847) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "sweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "shop_id", null: false
+    t.string "name"
+    t.string "price"
+    t.string "description"
+    t.string "imagePath"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["shop_id"], name: "index_sweets_on_shop_id"
+  end
+
+  add_foreign_key "sweets", "shops"
 end
