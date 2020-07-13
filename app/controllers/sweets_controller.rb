@@ -44,7 +44,7 @@ class SweetsController < ApplicationController
   
     private
   
-    def set_shop
+    def set_sweet
       @sweet = Sweet.find(params[:id])
     end
   
